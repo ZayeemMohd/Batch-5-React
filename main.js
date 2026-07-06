@@ -31,15 +31,35 @@ const RestaurantCard = (props) => {
   {
     /* 
         
-      let props =  {
-              resName: "Mehfil",
-              rating: 5
+      let props = {
+  
+              resDetail: {
+    id: "40377",
+    resName: "Lucky Restaurant",
+    cuisine: ["Biryani", "Tandoor"],
+    avgRating: 4.3,
+    delieveryTime: 36,
+    costForTwo: "₹300 for two",
+    imgId: "uvapcfajlsbctskdhuhl",
+    location: "Santosh Nagar",
+  },
         }
         
         */
   }
 
-  const { resName, rating } = props;
+  const restaurantObj = props.resDetail;
+
+  // {
+  //   id: "40377",
+  //   resName: "Lucky Restaurant",
+  //   cuisine: ["Biryani", "Tandoor"],
+  //   avgRating: 4.3,
+  //   delieveryTime: 36,
+  //   costForTwo: "₹300 for two",
+  //   imgId: "uvapcfajlsbctskdhuhl",
+  //   location: "Santosh Nagar",
+  // }
 
   return (
     <div className="res-card">
@@ -47,28 +67,75 @@ const RestaurantCard = (props) => {
         <img
           className="res-logo"
           alt="res-logo"
-          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2026/3/24/60cad3c2-5ba1-4697-955b-735d198ae7e8_491960.JPG"
+          src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${restaurantObj.imgId}`}
         />
       </div>
-      <h3 className="res-title">{resName}</h3>
-      <h4>Biryani, North Indian, Mughlai</h4>
-      <h4>⭐️ {rating} Stars</h4>
-      <h4>30 mins | ₹400 for two</h4>
+      <h3 className="res-title">{restaurantObj.resName}</h3>
+      <h4>{restaurantObj.cuisine}</h4>
+      <h4>⭐️ {restaurantObj.avgRating} Stars</h4>
+      <h4>
+        {restaurantObj.delieveryTime} mins | {restaurantObj.costForTwo}
+      </h4>
     </div>
   );
 };
+
+const restaurantsArr = [
+  {
+    id: "40377",
+    resName: "Lucky Restaurant",
+    cuisine: ["Biryani", "Tandoor"],
+    avgRating: 4.3,
+    delieveryTime: 36,
+    costForTwo: "₹300 for two",
+    imgId: "uvapcfajlsbctskdhuhl",
+    location: "Santosh Nagar",
+  },
+  {
+    id: "79706",
+    resName: "Shah Ghouse Hotel & Restaurant",
+    cuisine: ["Biryani", "Chinese", "Mughlai", "Tandoor"],
+    avgRating: 4.4,
+    delieveryTime: 30,
+    costForTwo: "₹350 for two",
+    imgId: "ggbuknqzqc4qoqfnl2cr",
+    location: "Charminar",
+  },
+  {
+    id: "150646",
+    resName: "Cream Stone Ice Cream",
+    cuisine: ["Ice Cream", "Desserts", "Beverages", "Ice Cream Cakes"],
+    avgRating: 4.4,
+    delieveryTime: 30,
+    costForTwo: "₹250 for two",
+    imgId:
+      "RX_THUMBNAIL/IMAGES/VENDOR/2025/7/24/de4e5459-06d1-4249-bf8f-7e9277fb5035_150646.JPG",
+    location: "Himayath Nagar",
+  },
+];
 
 const Body = () => {
   return (
     <div className="body">
       <div className="res-container">
-        <RestaurantCard resName={"Mehfil"} rating={5} />
+        <RestaurantCard resDetail={restaurantsArr[0]} />
+        <RestaurantCard resDetail={restaurantsArr[1]} />
+        <RestaurantCard resDetail={restaurantsArr[2]} />
 
         {/* 
         
         {
-              resName: "Mehfil",
-              rating: 5
+  
+              resDetail: {
+    id: "40377",
+    resName: "Lucky Restaurant",
+    cuisine: ["Biryani", "Tandoor"],
+    avgRating: 4.3,
+    delieveryTime: 36,
+    costForTwo: "₹300 for two",
+    imgId: "uvapcfajlsbctskdhuhl",
+    location: "Santosh Nagar",
+  },
         }
         
         */}
