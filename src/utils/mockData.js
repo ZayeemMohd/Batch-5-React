@@ -1,7 +1,8 @@
 
-export const restaurantsArr = [
+export let restaurantsArr = [
   {
-    id: "40377",
+    
+      id: "40377",
     resName: "Lucky Restaurant",
     cuisine: ["Biryani", "Tandoor"],
     avgRating: 4.3,
@@ -9,6 +10,8 @@ export const restaurantsArr = [
     costForTwo: "₹300 for two",
     imgId: "uvapcfajlsbctskdhuhl",
     location: "Santosh Nagar",
+    
+    
   },
   {
     id: "79706",
