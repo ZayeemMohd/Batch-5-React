@@ -3,13 +3,13 @@ import { imgBaseURL } from "../utils/constants";
 const RestaurantCard = ({ resDetail, extraDetail }) => {
   const {
     id,
-    resName,
-    cuisine,
+    name,
+    cuisines,
     avgRating,
-    delieveryTime,
+    sla,
     costForTwo,
-    imgId,
-    location,
+    cloudinaryImageId,
+    areaName,
   } = resDetail;
 
   return (
@@ -18,18 +18,18 @@ const RestaurantCard = ({ resDetail, extraDetail }) => {
         <img
           className="res-logo"
           alt="res-logo"
-          src={`${imgBaseURL}${imgId}`}
+          src={`${imgBaseURL}${cloudinaryImageId}`}
         />
       </div>
-      <h3 className="res-title">{resName}</h3>
-      <h4>{cuisine}</h4>
+      <h3 className="res-title">{name}</h3>
+      <h4>{cuisines.join(", ")}</h4>
       <h4>⭐️ {avgRating} Stars</h4>
       <h4>
-        {delieveryTime} mins | {costForTwo}
+        {sla.delieveryTime} mins | {costForTwo}
       </h4>
+      <h4>📍{areaName}</h4>
     </div>
   );
 };
-
 
 export default RestaurantCard;

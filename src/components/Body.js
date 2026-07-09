@@ -1,29 +1,42 @@
+import { swiggyURL } from "../utils/constants";
 import { restaurantsArr } from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
 import { Shimmer } from "./Shimmer";
+import { useState, useEffect } from "react";
 
 const Body = () => {
+  const [hotelList, setHotelList] = useState(null);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   const getData = async () => {
-    const response = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.374638644228302&lng=78.4300148114562&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
-    );
+    const response = await fetch(swiggyURL);
     const data = await response.json();
-    console.log(data);
+    console.log(
+      data.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants,
+    );
+
+    setHotelList(
+      data.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants,
+    );
+
+    console.log("hotel list", hotelList);
   };
+
+  if(hotelList == null){
+    return <Shimmer />
+  }
 
   return (
     <div className="body">
-      <div style={{ margin: "100px" }}>
-        {" "}
-        <button onClick={getData}>Get data</button>{" "}
-      </div>
-
-      {/* <Shimmer /> */}
-
       <div className="res-container">
-        {/* {restaurantsArr.map((resObj) => {
-          return <RestaurantCard resDetail={resObj} key={resObj.id} />;
-        })} */}
+        {hotelList.map((resObj) => {
+          return (
+            <RestaurantCard resDetail={resObj?.info} key={resObj?.info?.id} />
+          );
+        })}
       </div>
     </div>
   );
