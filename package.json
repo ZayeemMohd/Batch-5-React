@@ -2,7 +2,6 @@
   "name": "batch-5-react",
   "version": "1.0.0",
   "description": "",
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx parcel index.html",
@@ -15,7 +14,8 @@
   "type": "module",
   "dependencies": {
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "react-router-dom": "^7.18.1"
   },
   "devDependencies": {
     "parcel": "^2.16.4"

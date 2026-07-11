@@ -6,10 +6,10 @@ import { useState, useEffect } from "react";
 
 const Body = () => {
   const [hotelList, setHotelList] = useState(null);
+  // const [Count, setCount] = useState(second)
 
-  useEffect(() => {
-    getData();
-  }, []);
+  useEffect(()=>{ getData() }, [])
+  
 
   const getData = async () => {
     const response = await fetch(swiggyURL);
