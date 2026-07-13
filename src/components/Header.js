@@ -4,9 +4,11 @@ import { logoURL } from "../utils/constants";
 const Header = () => {
   return (
     <div className="header">
-      <div className="logo-container">
-        <img className="header-logo" src={logoURL} />
-      </div>
+      <Link to={"/"}>
+        <div className="logo-container">
+          <img className="header-logo" src={logoURL} />
+        </div>
+      </Link>
 
       <div className="search-bar">
         <input placeholder="Search For Restaurants and Food" />

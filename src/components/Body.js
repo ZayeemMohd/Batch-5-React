@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { swiggyURL } from "../utils/constants";
 import { restaurantsArr } from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
@@ -8,8 +9,9 @@ const Body = () => {
   const [hotelList, setHotelList] = useState(null);
   // const [Count, setCount] = useState(second)
 
-  useEffect(()=>{ getData() }, [])
-  
+  useEffect(() => {
+    getData();
+  }, []);
 
   const getData = async () => {
     const response = await fetch(swiggyURL);
@@ -25,8 +27,8 @@ const Body = () => {
     console.log("hotel list", hotelList);
   };
 
-  if(hotelList == null){
-    return <Shimmer />
+  if (hotelList == null) {
+    return <Shimmer />;
   }
 
   return (
@@ -34,7 +36,10 @@ const Body = () => {
       <div className="res-container">
         {hotelList.map((resObj) => {
           return (
-            <RestaurantCard resDetail={resObj?.info} key={resObj?.info?.id} />
+            <Link to={`/restaurant/${resObj?.info?.id}`} key={resObj?.info?.id}>
+              {" "}
+              <RestaurantCard resDetail={resObj?.info} />{" "}
+            </Link>
           );
         })}
       </div>
