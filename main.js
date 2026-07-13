@@ -7,6 +7,9 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import Error from "./src/components/Error";
 import Body from "./src/components/Body";
 import Cart from "./src/components/Cart";
+import Signup from "./src/components/Signup";
+import Auth from "./src/components/Auth";
+import Signin from "./src/components/Signin";
 
 const appRouter = createBrowserRouter([
   {
@@ -27,8 +30,22 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart />
-      }
+        element: <Cart />,
+      },
+      {
+        path: "/auth",
+        element: <Auth />,
+        children: [
+          {
+            path: "/auth/signup",
+            element: <Signup />,
+          },
+          {
+            path: "/auth/signin",
+            element: <Signin />
+          }
+        ],
+      },
     ],
     errorElement: <Error />,
   },

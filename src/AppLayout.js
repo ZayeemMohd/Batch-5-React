@@ -14,4 +14,4 @@ import Header from "./components/Header";
   );
 };
 
-export default AppLayout;
+export default AppLayout; 
