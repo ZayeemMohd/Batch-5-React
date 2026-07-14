@@ -10,7 +10,7 @@ import Cart from "./src/components/Cart";
 import Signup from "./src/components/Signup";
 import Auth from "./src/components/Auth";
 import Signin from "./src/components/Signin";
-import RestaurantPage from "./src/components/RestaurantPage";
+import RestaurantMenu from "./src/components/RestaurantMenu";
 
 const appRouter = createBrowserRouter([
   {
@@ -34,8 +34,9 @@ const appRouter = createBrowserRouter([
         element: <Cart />,
       },
       {
+        // path: '/restaurant/345345
         path: '/restaurant/:resId',
-        element: <RestaurantPage />
+        element: <RestaurantMenu />
       }
       ,
       {
