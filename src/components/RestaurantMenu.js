@@ -4,6 +4,7 @@ import { MenuAPI } from "../utils/constants";
 import { useEffect, useState } from "react";
 import RestaurantMenuInfoCard from "./RestaurantMenuInfoCard";
 import RestaurantCategory from "./RestaurantCategory";
+import { Shimmer } from "./Shimmer";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -48,6 +49,10 @@ const RestaurantMenu = () => {
     cuisines,
     cloudinaryImageId,
   } = menu?.data?.cards[2]?.card?.card?.info;
+
+  if (menu === null) {
+    return <Shimmer />;
+  }
 
   return (
     <div
