@@ -5,25 +5,15 @@ import { useEffect, useState } from "react";
 import RestaurantMenuInfoCard from "./RestaurantMenuInfoCard";
 import RestaurantCategory from "./RestaurantCategory";
 import { Shimmer } from "./Shimmer";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
 
-  const [menu, setMenu] = useState(null);
-
-  useEffect(() => {
-    getRestaurantMenu();
-  }, []);
-
-  const getRestaurantMenu = async () => {
-    const rawData = await fetch(MenuAPI + resId);
-    const json = await rawData.json();
-    console.log(json);
-    setMenu(json);
-  };
+  const menu = useRestaurantMenu(resId);
 
   if (menu === null) {
-    return <div>Loading...</div>;
+    return <Shimmer />;
   }
 
   const categories =
@@ -40,8 +30,6 @@ const RestaurantMenu = () => {
       },
     );
 
-  console.log(categories);
-
   const {
     name,
     avgRatingString,
@@ -49,10 +37,6 @@ const RestaurantMenu = () => {
     cuisines,
     cloudinaryImageId,
   } = menu?.data?.cards[2]?.card?.card?.info;
-
-  if (menu === null) {
-    return <Shimmer />;
-  }
 
   return (
     <div
