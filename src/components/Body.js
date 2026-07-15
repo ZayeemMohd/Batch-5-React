@@ -4,10 +4,13 @@ import { restaurantsArr } from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
 import { Shimmer } from "./Shimmer";
 import { useState, useEffect } from "react";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [hotelList, setHotelList] = useState(null);
   // const [Count, setCount] = useState(second)
+
+  const isOnline = useOnlineStatus();
 
   useEffect(() => {
     getData();
@@ -26,6 +29,16 @@ const Body = () => {
 
     console.log("hotel list", hotelList);
   };
+
+  if (!isOnline) {
+    return (
+      <div className="body">
+        <h1 style={{ padding: "10vh 1.5rem", textAlign: "center" }}>
+          🔴 You are offline. Please check your internet connection.
+        </h1>
+      </div>
+    );
+  }
 
   if (hotelList == null) {
     return <Shimmer />;
