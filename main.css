@@ -84,6 +84,14 @@
   overflow: hidden;
 }
 
+.red {
+  color: red;
+}
+
+.bg-green{
+  background-color: green;
+}
+
 .shimmer-card::before {
   content: "";
   position: absolute;

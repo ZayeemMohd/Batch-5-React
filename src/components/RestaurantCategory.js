@@ -13,7 +13,7 @@ const RestaurantCategory = ({ categoryInfo }) => {
   }
 
   return (
-    <div className="category-accordian">
+    <div className="category-accordian ">
       <div className="category-header" onClick={toggleBody}>
         <span>
           {title} ({itemCards.length})

@@ -56,6 +56,7 @@ const RestaurantMenu = () => {
             key={category.card.card.categoryId}
             categoryInfo={category.card.card}
           />
+          
         );
       })}
     </div>
