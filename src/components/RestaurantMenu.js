@@ -10,6 +10,9 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 const RestaurantMenu = () => {
   const { resId } = useParams();
 
+  // const [isOpen, setIsOpen] = useState(true);
+  const [showIndex, setShowIndex] = useState(null);
+
   const menu = useRestaurantMenu(resId);
 
   if (menu === null) {
@@ -49,14 +52,17 @@ const RestaurantMenu = () => {
     >
       <RestaurantMenuInfoCard menu={menu} />
 
-      {categories.map((category) => {
+      {categories.map((category, index) => {
         console.log(category);
         return (
           <RestaurantCategory
+            setIndex={() => {
+              setShowIndex(index);
+            }}
+            order={index === showIndex ? true : false}
             key={category.card.card.categoryId}
             categoryInfo={category.card.card}
           />
-          
         );
       })}
     </div>

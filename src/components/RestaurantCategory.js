@@ -2,14 +2,16 @@ import React from "react";
 import MenuItem from "./MenuItem";
 import { useState } from "react";
 
-const RestaurantCategory = ({ categoryInfo }) => {
+const RestaurantCategory = ({ categoryInfo, order, setIndex }) => {
   //   console.log("categoryinfo", categoryInfo);
   const { title, itemCards } = categoryInfo;
 
-  const [isOpen, setIsOpen] = useState(false);
+
+  let isOpen = order
+
 
   function toggleBody() {
-    setIsOpen(!isOpen);
+    setIndex()
   }
 
   return (
