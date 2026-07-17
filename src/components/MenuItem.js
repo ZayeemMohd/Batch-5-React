@@ -1,7 +1,7 @@
 import React from "react";
 import { imgBaseURL } from "../utils/constants";
 
-const MenuItem = ({ details }) => {
+const MenuItem = ({ details, propData }) => {
   console.log("details aagai", details);
   const {
     name,
@@ -23,11 +23,11 @@ const MenuItem = ({ details }) => {
           {ratings.aggregatedRating.ratingCount})
         </p>
         <p>{description}</p>
+        <p>{propData}</p>
       </div>
 
-
       <div>
-        <img alt={name} className="menu-item-img" src={imgBaseURL + imageId}/>
+        <img alt={name} className="menu-item-img" src={imgBaseURL + imageId} />
       </div>
     </div>
   );

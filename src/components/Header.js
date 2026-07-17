@@ -1,9 +1,12 @@
 import { Link } from "react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { logoURL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
+  const data = useContext(UserContext);
+
   const isOnline = useOnlineStatus();
 
   return (
@@ -44,6 +47,7 @@ const Header = () => {
             {" "}
             <Link to={"/cart"}>Cart</Link>
           </li>
+          <li>{data.name}</li>
         </ul>
       </div>
     </div>

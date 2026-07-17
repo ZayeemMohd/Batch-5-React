@@ -8,10 +8,13 @@ import { Shimmer } from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
+
+  const impData = "dummy abc"
+
   const { resId } = useParams();
 
   // const [isOpen, setIsOpen] = useState(true);
-  const [showIndex, setShowIndex] = useState(null);
+  const [showIndex, setShowIndex] = useState(1);
 
   const menu = useRestaurantMenu(resId);
 
@@ -56,8 +59,9 @@ const RestaurantMenu = () => {
         console.log(category);
         return (
           <RestaurantCategory
+            propData={impData}
             setIndex={() => {
-              setShowIndex(index);
+              setShowIndex(index === showIndex ? null : index);
             }}
             order={index === showIndex ? true : false}
             key={category.card.card.categoryId}

@@ -1,8 +1,10 @@
 import useOnlineStatus from "../utils/useOnlineStatus";
-
+import UserContext from "../utils/UserContext";
+import { useContext } from "react";
 
 const Footer = () => {
- const isOnline =  useOnlineStatus();
+  const data = useContext(UserContext);
+  const isOnline = useOnlineStatus();
   return (
     <div
       className="footer"
@@ -11,11 +13,10 @@ const Footer = () => {
         color: "white",
       }}
     >
-      <h4>© 2024 Zayeem Mohd. All rights reserved.</h4>
+      <h4>© 2024 {data.name}. All rights reserved.</h4>
       {isOnline ? <p>Online</p> : <p>Offline</p>}
     </div>
   );
 };
-
 
 export default Footer;

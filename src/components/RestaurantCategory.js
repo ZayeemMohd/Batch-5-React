@@ -2,9 +2,10 @@ import React from "react";
 import MenuItem from "./MenuItem";
 import { useState } from "react";
 
-const RestaurantCategory = ({ categoryInfo, order, setIndex }) => {
+const RestaurantCategory = ({ categoryInfo, order, setIndex, propData }) => {
   //   console.log("categoryinfo", categoryInfo);
   const { title, itemCards } = categoryInfo;
+
 
 
   let isOpen = order
@@ -28,6 +29,7 @@ const RestaurantCategory = ({ categoryInfo, order, setIndex }) => {
           {itemCards.map((singleMenu) => {
             return (
               <MenuItem
+                propData={propData}
                 details={singleMenu.card.info}
                 key={singleMenu.card.info.id}
               />
