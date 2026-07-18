@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { swiggyURL } from "../utils/constants";
 import { restaurantsArr } from "../utils/mockData";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withDiscountLable } from "./RestaurantCard";
 import { Shimmer } from "./Shimmer";
 import { useState, useEffect } from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -11,6 +11,8 @@ import HotelListContext from "../utils/HotelListContext";
 const Body = () => {
 
   const {hotelList, setHotelList, setAllItems} = useContext(HotelListContext)
+
+  const DiscountRestaurantCard =  withDiscountLable(RestaurantCard)
  
   // const [Count, setCount] = useState(second)
 
@@ -57,7 +59,10 @@ const Body = () => {
           return (
             <Link to={`/restaurant/${resObj?.info?.id}`} key={resObj?.info?.id}>
               {" "}
-              <RestaurantCard resDetail={resObj?.info} />{" "}
+              {
+                resObj?.info?.aggregatedDiscountInfoV3 ? <DiscountRestaurantCard resDetail={resObj?.info}/> : <RestaurantCard resDetail={resObj?.info} />
+              }
+              {" "}
             </Link>
           );
         })}
