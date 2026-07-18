@@ -3,9 +3,35 @@ import { useState, useEffect, useContext } from "react";
 import { logoURL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import HotelListContext from "../utils/HotelListContext";
 
 const Header = () => {
   const data = useContext(UserContext);
+
+  const { hotelList, setHotelList, allItems } = useContext(HotelListContext);
+
+  const [filterToggle, setFilterToggle] = useState(false);
+
+  function setFilter() {
+    console.log("button clicked and setfilter function called");
+    // setHotelList(null)
+
+    if (!filterToggle) {
+      const filteredArray = hotelList.filter((restaurant) => {
+        if (restaurant.info.avgRating > 4.3) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+
+      setHotelList(filteredArray);
+      setFilterToggle(!filterToggle);
+    } else {
+      setHotelList(allItems);
+      setFilterToggle(!filterToggle);
+    }
+  }
 
   const isOnline = useOnlineStatus();
 
@@ -23,6 +49,14 @@ const Header = () => {
 
       <div className="nav-items">
         <ul>
+          <li>
+            <button className="filter-btn " onClick={setFilter}>
+              {filterToggle
+                ? "Show All Restaurants"
+                : "Filter Top Rated Restaurants"}
+            </button>
+          </li>
+
           {isOnline ? (
             <li> 🟢 Online </li>
           ) : (

@@ -5,9 +5,13 @@ import RestaurantCard from "./RestaurantCard";
 import { Shimmer } from "./Shimmer";
 import { useState, useEffect } from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import {useContext} from "react"
+import HotelListContext from "../utils/HotelListContext";
 
 const Body = () => {
-  const [hotelList, setHotelList] = useState(null);
+
+  const {hotelList, setHotelList, setAllItems} = useContext(HotelListContext)
+ 
   // const [Count, setCount] = useState(second)
 
   const isOnline = useOnlineStatus();
@@ -23,6 +27,8 @@ const Body = () => {
       data.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants,
     );
 
+
+    setAllItems( data.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants,)
     setHotelList(
       data.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants,
     );

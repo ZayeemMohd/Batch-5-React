@@ -4,10 +4,15 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import UserContext from "./utils/UserContext";
 import { useState, useEffect } from "react";
+import HotelListContext from "./utils/HotelListContext";
 
 const AppLayout = () => {
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
+
+
+  const [allItems, setAllItems] = useState(null); // master copy
+  const [hotelList, setHotelList] = useState(null); // UI copy
 
   //authentication
   useEffect(() => {
@@ -32,9 +37,11 @@ const AppLayout = () => {
   return (
     <div>
       <UserContext.Provider value={{ name: username, email: email }}>
-        <Header />
-        <Outlet />
-        <Footer />
+        <HotelListContext.Provider value={{hotelList, setHotelList, setAllItems, allItems}}>
+          <Header />
+          <Outlet />
+          <Footer />
+        </HotelListContext.Provider>
       </UserContext.Provider>
     </div>
   );
