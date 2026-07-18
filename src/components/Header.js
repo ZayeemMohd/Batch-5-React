@@ -44,7 +44,24 @@ const Header = () => {
       </Link>
 
       <div className="search-bar">
-        <input placeholder="Search For Restaurants and Food" />
+        <input
+          placeholder="Search For Restaurants and Food"
+          onChange={(e) => {
+            // console.log(e.target.value);
+            const filteredList = allItems.filter((restaurant) => {
+              if (
+                restaurant.info.name
+                  .toLowerCase()
+                  .includes(e.target.value.toLowerCase()) == true
+              ) {
+                return true;
+              } else {
+                return false;
+              }
+            });
+            setHotelList(filteredList);
+          }}
+        />
       </div>
 
       <div className="nav-items">
